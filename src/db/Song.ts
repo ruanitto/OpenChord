@@ -1,8 +1,8 @@
-import { v4 } from 'uuid'
 import { Artist } from './Artist';
 import { SongBundle } from './bundler';
 import realm from '.';
 import { SongModel } from '@/db/models';
+import { v4 as uuid } from 'uuid'
 
 export class Song extends SongModel {
   static search(query: string) {
@@ -34,7 +34,7 @@ export class Song extends SongModel {
 
   static create(artist: Artist, title: string, content: string, id?: string) {
     if (id == null) {
-      id = v4()
+      id = uuid()
     } else if (Song.getById(id)) {
       throw new Error('Song id already exists')
     }

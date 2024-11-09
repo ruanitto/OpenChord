@@ -2,6 +2,12 @@ import { SupportedLanguages } from "@/hooks/language/schema"
 import realm from "."
 import { GlobalSettingsModel } from "@/db/models"
 
+const DEFAULTS: Partial<GlobalSettingsModel> = {
+  language: SupportedLanguages.EN_EN,
+  fontSize: 14,
+  showTablature: true,
+  enablePageTurner: false,
+}
 
 export class GlobalSettings extends GlobalSettingsModel {
   static get() {
@@ -9,15 +15,10 @@ export class GlobalSettings extends GlobalSettingsModel {
 
     if (globalSettings == null) {
       realm.write(() => {
-        realm.create<GlobalSettings>('GlobalSettings', {
-          language: SupportedLanguages.EN_EN,
-          fontSize: 14,
-          showTablature: true,
-          enablePageTurner: false,
-        })
+        realm.create<GlobalSettings>('GlobalSettings', DEFAULTS)
       })
 
-      return realm.objects<GlobalSettings>('GlobalSettings').find<GlobalSettings>(() => true)!
+      return realm.objects('GlobalSettings').find<GlobalSettings>(() => true)!
     } else {
       return globalSettings
     }

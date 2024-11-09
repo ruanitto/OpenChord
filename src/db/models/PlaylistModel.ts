@@ -11,7 +11,7 @@ export default class PlaylistModel extends Realm.Object {
         name: 'Playlist',
         primaryKey: 'id',
         properties: {
-            id: 'string',
+            id: 'uuid',
             name: { type: 'string', optional: false },
             songs: { type: 'list', objectType: 'Song' },
             updated_at: 'date'

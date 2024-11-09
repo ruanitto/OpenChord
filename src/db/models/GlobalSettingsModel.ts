@@ -1,15 +1,8 @@
-import { SupportedLanguages } from "@/hooks/language/schema"
+import { Language } from "@/hooks/language/schema"
 import Realm from 'realm'
 
-const DEFAULTS = {
-    language: SupportedLanguages.EN_EN,
-    fontSize: 14,
-    showTablature: true,
-    enablePageTurner: false,
-}
-
 export default class GlobalSettingsModel extends Realm.Object {
-    language!: SupportedLanguages
+    language!: Language
     fontSize!: number
     showTablature!: boolean
     enablePageTurner!: boolean
@@ -17,10 +10,10 @@ export default class GlobalSettingsModel extends Realm.Object {
     static schema: Realm.ObjectSchema = {
         name: 'GlobalSettings',
         properties: {
-            language: { type: 'string', default: DEFAULTS.language },
-            fontSize: { type: 'int', default: DEFAULTS.fontSize },
-            showTablature: { type: 'bool', default: DEFAULTS.showTablature },
-            enablePageTurner: { type: 'bool', default: DEFAULTS.enablePageTurner },
+            language: { type: 'string', default: 'pt-BR' },
+            fontSize: { type: 'int', default: 14 },
+            showTablature: { type: 'bool', default: true },
+            enablePageTurner: { type: 'bool', default: false },
         }
     }
 }

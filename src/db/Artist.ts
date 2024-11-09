@@ -1,7 +1,7 @@
 import { ArtistModel } from "@/db/models"
 import realm from "."
 import { Song } from "./Song"
-import { v4 } from 'uuid'
+import { v4 as uuid } from 'uuid'
 
 export class Artist extends ArtistModel {
   songs() {
@@ -42,7 +42,7 @@ export class Artist extends ArtistModel {
 
     realm.write(() => {
       artist = realm.create<Artist>('Artist', {
-        id: v4(),
+        id: uuid(),
         name,
         updated_at: new Date() //.toJSON()
       })

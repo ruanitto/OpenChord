@@ -15,7 +15,7 @@ export default class SongModel extends Realm.Object {
         name: 'Song',
         primaryKey: 'id',
         properties: {
-            id: 'string',
+            id: 'uuid',
             title: 'string',
             content: 'string',
             transposeAmount: 'int?',

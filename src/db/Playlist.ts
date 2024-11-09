@@ -1,9 +1,9 @@
 import realm from "."
 import { List, Results } from "realm"
 import { Song } from "./Song"
-import { v4 } from "uuid"
 import { PlaylistBundle } from "./bundler"
 import { PlaylistModel } from "@/db/models"
+import { v4 as uuid } from 'uuid'
 
 export class Playlist extends PlaylistModel {
   static getAll() { return realm.objects<Playlist>('Playlist').sorted('name') }
@@ -47,7 +47,7 @@ export class Playlist extends PlaylistModel {
 
     realm.write(() => {
       playlist = realm.create<Playlist>('Playlist', {
-        id: v4(),
+        id: uuid(),
         name,
         updated_at: new Date() //.toJSON()
       })
