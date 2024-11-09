@@ -5,6 +5,8 @@ export const enum SupportedLanguages {
   PT_BR = 'pt-BR',
 }
 
+export const languages = [SupportedLanguages.EN_EN, SupportedLanguages.PT_BR]
+
 export const languageSchema = z.enum([
   SupportedLanguages.EN_EN,
   SupportedLanguages.PT_BR,

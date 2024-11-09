@@ -5,6 +5,7 @@ import { PlaylistList } from '@/screens';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import SettingsTab from './SettingsTab';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 
@@ -29,11 +30,11 @@ function MainTab() {
           <Tab.Screen
             name="OnlineSearch"
             options={{ title: t('online_search'), tabBarIcon: (props) => <TabBarIcon {...props} name="magnify" /> }}
-            component={OnlineSearch} />
+            component={OnlineSearch} /> */}
           <Tab.Screen
-            name="Settings"
-            options={{ title: t('settings'), tabBarIcon: (props) => <TabBarIcon {...props} name="settings" /> }}
-            component={SettingsTab} /> */}
+            component={SettingsTab}
+            name={Tabs.Settings}
+            options={{ title: t('settings'), tabBarIcon: (props) => <TabBarIcon {...props} name="settings" /> }} />
     </Tab.Navigator>
   )
 }

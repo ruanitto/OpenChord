@@ -1,4 +1,4 @@
-import type { Paths, Tabs } from '@/navigation/paths';
+import type { Config, Paths, Tabs } from '@/navigation/paths';
 import type { StackScreenProps } from '@react-navigation/stack';
 
 export type RootStackParamList = {
@@ -20,6 +20,7 @@ export type MainTabParamList = {
   [Tabs.Settings]: undefined
 }
 
-// export type MainTabScreenProps<
-//   S extends keyof RootStackParamList = keyof RootStackParamList,
-// > = StackScreenProps<RootStackParamList, S>;
+export type SettingsStackParamList = {
+  [Config.Settings]: undefined;
+  [Config.FontSizeSelect]: undefined;
+};

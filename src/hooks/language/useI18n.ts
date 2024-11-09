@@ -15,5 +15,5 @@ const toggleLanguage = () => {
 };
 
 export const useI18n = () => {
-  return { changeLanguage, toggleLanguage };
+  return { changeLanguage, toggleLanguage, language: i18next.language as SupportedLanguages};
 };

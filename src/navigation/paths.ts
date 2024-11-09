@@ -12,3 +12,8 @@ export const enum Tabs {
   Settings = 'settings',
   SongList = 'song-list'
 }
+
+export const enum Config {
+  FontSizeSelect = 'font-size-select',
+  Settings = 'settings'
+}
