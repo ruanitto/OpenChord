@@ -1,15 +1,15 @@
-import realm, { Artist, Song } from "."
 import { JsonDecoder } from "@artutra/ts-data-json"
+import realm, { Artist, Song } from "."
 import { Playlist } from "./Playlist"
 
 export interface SongBundle {
-  id: string
-  title: string
-  content: string
-  artist: string
-  transposeAmount?: number | null | undefined
-  fontSize?: number | null | undefined
-  showTablature: boolean
+  artist: string,
+  content: string,
+  fontSize?: number | null | undefined,
+  id: string,
+  showTablature: boolean,
+  title: string,
+  transposeAmount?: number | null | undefined,
   updated_at: string
 }
 
@@ -20,20 +20,20 @@ export interface PlaylistBundle {
 }
 
 export interface DatabaseBundle {
-  version: number
-  created_at: string
+  created_at: string,
+  playlists: PlaylistBundle[],
   songs: SongBundle[]
-  playlists: PlaylistBundle[]
+  version: number
 }
 
 export function createBundle(playlistIds?: string[], songIds?: string[]): DatabaseBundle {
-  let db: DatabaseBundle = { version: 1, songs: [], playlists: [], created_at: new Date().toJSON() }
+  const db: DatabaseBundle = { version: 1, songs: [], playlists: [], created_at: new Date().toJSON() }
 
   if (songIds) {
     songIds.forEach(songId => {
-      let s = Song.getById(songId)
+      const s = Song.getById(songId)
 
-      if (!s) throw new Error('Invalid song ids')
+      if (!s) {throw new Error('Invalid song ids')}
 
       db.songs.push(Song.toBundle(s))
     })
@@ -45,12 +45,12 @@ export function createBundle(playlistIds?: string[], songIds?: string[]): Databa
 
   if (playlistIds) {
     playlistIds.forEach(playlistId => {
-      let p = Playlist.getById(playlistId)
+      const p = Playlist.getById(playlistId)
 
-      if (!p) throw new Error('Invalid playlist id')
+      if (!p) {throw new Error('Invalid playlist id')}
 
-      for (var s in p.songs) {
-        let song = p.songs[s]
+      for (const s in p.songs) {
+        const song = p.songs[s]
 
         if (db.songs.find(s => s.id === song.id) == null) {
           db.songs.push(Song.toBundle(song))
@@ -69,7 +69,7 @@ export function createBundle(playlistIds?: string[], songIds?: string[]): Databa
 }
 
 export function importBundle(bundle: DatabaseBundle): void {
-  let mapExistingSongs: { [key: string]: string } = {}
+  const mapExistingSongs: { [key: string]: string } = {}
 
   bundle.songs.forEach(bundleSong => {
     let artistDb: Artist | undefined = Artist.getByName(bundleSong.artist)
@@ -78,7 +78,7 @@ export function importBundle(bundle: DatabaseBundle): void {
       artistDb = Artist.create(bundleSong.artist)
     }
 
-    let songDb = Song.getById(bundleSong.id)
+    const songDb = Song.getById(bundleSong.id)
 
     if (songDb) {
       mapExistingSongs[bundleSong.id] = songDb.id
@@ -88,7 +88,7 @@ export function importBundle(bundle: DatabaseBundle): void {
       }
 
     } else {
-      let s = Song.create(artistDb, bundleSong.title, bundleSong.content, bundleSong.id)
+      const s = Song.create(artistDb, bundleSong.title, bundleSong.content, bundleSong.id)
 
       mapExistingSongs[bundleSong.id] = s.id
     }
@@ -102,7 +102,7 @@ export function importBundle(bundle: DatabaseBundle): void {
     }
 
     bundlePlaylist.songs.forEach(bundleSong => {
-      let songDb = Song.getById(mapExistingSongs[bundleSong.id])
+      const songDb = Song.getById(mapExistingSongs[bundleSong.id])
 
       if (songDb == null) {
         throw new Error('Playlist song not found')
@@ -139,7 +139,7 @@ const bundleDecoder = JsonDecoder.object<DatabaseBundle>({
   'DatabaseBundle')
 
 export async function decodeJsonBundle(jsonString: string): Promise<DatabaseBundle> {
-  let bundle = JSON.parse(jsonString)
+  const bundle = JSON.parse(jsonString)
 
   return await bundleDecoder.decodePromise<DatabaseBundle>(bundle)
 }

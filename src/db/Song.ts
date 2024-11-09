@@ -1,8 +1,8 @@
-import { Artist } from './Artist';
-import { SongBundle } from './bundler';
-import realm from '.';
 import { SongModel } from '@/db/models';
-import { v4 as uuid } from 'uuid'
+import { v4 as uuid } from 'uuid';
+import realm from '.';
+import { Artist } from './Artist';
+import type { SongBundle } from './bundler';
 
 export class Song extends SongModel {
   static search(query: string) {
@@ -22,10 +22,10 @@ export class Song extends SongModel {
   static getChordPro(song: Song) {
     let headerlessContent = song.content
 
-    headerlessContent = headerlessContent.replace(/{artist:[^}]*}\n/g, '')
-    headerlessContent = headerlessContent.replace(/{title:[^}]*}\n/g, '')
+    headerlessContent = headerlessContent.replaceAll(/{artist:[^}]*}\n/g, '')
+    headerlessContent = headerlessContent.replaceAll(/{title:[^}]*}\n/g, '')
 
-    let header =
+    const header =
       `{title: ${song.title}}\n` +
       `{artist: ${song.artist.name}}\n`
 
@@ -80,7 +80,7 @@ export class Song extends SongModel {
       throw new Error(`Empty content not allowed`)
     }
 
-    let song = Song.getById(id)
+    const song = Song.getById(id)
 
     if (song != null) {
       realm.write(() => {
@@ -98,8 +98,8 @@ export class Song extends SongModel {
 
   static delete(id: string) {
     realm.write(() => {
-      let song = Song.getById(id)
-      let artistId = song!.artist.id!
+      const song = Song.getById(id)
+      const artistId = song!.artist.id!
       realm.delete(song)
 
       if (Song.getByArtist(artistId).length <= 0) {
@@ -109,11 +109,11 @@ export class Song extends SongModel {
   }
 
   static setPreferences(song: Song, preferences: {
-    showTablature?: boolean,
     fontSize?: number | null,
+    showTablature?: boolean,
     transposeAmount?: number | null
   }) {
-    let {
+    const {
       showTablature = song.showTablature,
       fontSize = song.fontSize,
       transposeAmount = song.transposeAmount

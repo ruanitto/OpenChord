@@ -2,9 +2,9 @@
 import { Artist } from '@/db/Artist';
 import { ArtistModel, GlobalSettingsModel, PlaylistModel, SongModel } from '@/db/models';
 import { Song } from '@/db/Song';
-import Realm from 'realm'
+import Realm from 'realm';
 
-var realm = new Realm({
+const realm = new Realm({
   path: 'OpenChord',
   schema: [
     SongModel.schema,
@@ -18,5 +18,4 @@ var realm = new Realm({
 
 export default realm;
 
-export { Song }
-export { Artist }
+export { Artist, Song };

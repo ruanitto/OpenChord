@@ -1,4 +1,4 @@
-import { Language } from "@/hooks/language/schema"
+import type { Language } from "@/hooks/language/schema"
 import Realm from 'realm'
 
 export default class GlobalSettingsModel extends Realm.Object {

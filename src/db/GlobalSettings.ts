@@ -1,9 +1,9 @@
+import { GlobalSettingsModel } from "@/db/models"
 import { SupportedLanguages } from "@/hooks/language/schema"
 import realm from "."
-import { GlobalSettingsModel } from "@/db/models"
 
 const DEFAULTS: Partial<GlobalSettingsModel> = {
-  language: SupportedLanguages.EN_EN,
+  language: SupportedLanguages.PT_BR,
   fontSize: 14,
   showTablature: true,
   enablePageTurner: false,
@@ -11,7 +11,7 @@ const DEFAULTS: Partial<GlobalSettingsModel> = {
 
 export class GlobalSettings extends GlobalSettingsModel {
   static get() {
-    let globalSettings = realm.objects('GlobalSettings').find<GlobalSettings>(() => true)
+    const globalSettings = realm.objects('GlobalSettings').find<GlobalSettings>(() => true)
 
     if (globalSettings == null) {
       realm.write(() => {
@@ -25,7 +25,7 @@ export class GlobalSettings extends GlobalSettingsModel {
   }
 
   static setLanguage(language: SupportedLanguages) {
-    let globalSettings = this.get()
+    const globalSettings = this.get()
 
     realm.write(() => {
       globalSettings.language = language
@@ -33,7 +33,7 @@ export class GlobalSettings extends GlobalSettingsModel {
   }
 
   static setFontSize(fontSize: number) {
-    let globalSettings = this.get()
+    const globalSettings = this.get()
 
     realm.write(() => {
       globalSettings.fontSize = fontSize
@@ -41,7 +41,7 @@ export class GlobalSettings extends GlobalSettingsModel {
   }
 
   static setShowTablature(showTablature: boolean) {
-    let globalSettings = this.get()
+    const globalSettings = this.get()
 
     realm.write(() => {
       globalSettings.showTablature = showTablature
@@ -49,7 +49,7 @@ export class GlobalSettings extends GlobalSettingsModel {
   }
 
   static setEnablePageTurner(enablePageTurner: boolean) {
-    let globalSettings = this.get()
+    const globalSettings = this.get()
 
     realm.write(() => {
       globalSettings.enablePageTurner = enablePageTurner

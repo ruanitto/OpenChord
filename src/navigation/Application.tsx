@@ -1,15 +1,12 @@
+import MainTab from '@/navigation/MainTab';
+import { Paths } from '@/navigation/paths';
 import type { RootStackParamList } from '@/navigation/types';
-
+import { Example, Startup } from '@/screens';
+import { useTheme } from '@/theme';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-
-import { useTheme } from '@/theme';
-import { Paths } from '@/navigation/paths';
-
-import { Example, Startup } from '@/screens';
-import MainTab from '@/navigation/MainTab';
 import { useTranslation } from 'react-i18next';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator<RootStackParamList>();
 

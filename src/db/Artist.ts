@@ -1,7 +1,7 @@
 import { ArtistModel } from "@/db/models"
+import { v4 as uuid } from 'uuid'
 import realm from "."
 import { Song } from "./Song"
-import { v4 as uuid } from 'uuid'
 
 export class Artist extends ArtistModel {
   songs() {
@@ -32,7 +32,7 @@ export class Artist extends ArtistModel {
       throw new Error(`Empty name not allowed`)
     }
 
-    let sameNameArtist = Artist.getByName(name)
+    const sameNameArtist = Artist.getByName(name)
 
     if (sameNameArtist) {
       throw new Error(`Artist with name "${name}" already exists`)
@@ -52,12 +52,12 @@ export class Artist extends ArtistModel {
   }
 
   static update(id: string, name: string) {
-    let artist = Artist.getById(id)
+    const artist = Artist.getById(id)
 
     if (artist) {
-      if (name == artist.name) return artist
+      if (name == artist.name) {return artist}
 
-      let artistWithSameName = Artist.getByName(name)
+      const artistWithSameName = Artist.getByName(name)
 
       if (artistWithSameName) {
         // TODO: Merge songs to this artist

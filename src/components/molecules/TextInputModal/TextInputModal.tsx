@@ -47,7 +47,8 @@ function TextInputModal({
   error,
   onSubmit,
   submitButtonTitle = 'OK',
-  onChange
+  onChange,
+  value: propsValue
 }: TextInputModalProps) {
 
   const [value, setValue] = useState(initialValue)
@@ -73,7 +74,7 @@ function TextInputModal({
       <View style={styles.container}>
         <TouchableOpacity onPress={onDismiss} style={styles.outsideContainer} />
         <KeyboardAvoidingView behavior={Platform.OS === 'android' ? 'height' : 'padding'} contentContainerStyle={styles.backgroundOverlayer}>
-          <TextInput onChangeText={onChangeText} placeholder={placeholder} ref={textInput} style={styles.input} value={props.value} />
+          <TextInput onChangeText={onChangeText} placeholder={placeholder} ref={textInput} style={styles.input} value={propsValue} />
           <ErrorText>{error}</ErrorText>
           <PrimaryButton onPress={() => onSubmit(value)} style={styles.button} title={submitButtonTitle} />
         </KeyboardAvoidingView>

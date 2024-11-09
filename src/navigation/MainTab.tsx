@@ -1,10 +1,10 @@
-import React from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import type { MainTabParamList } from '@/navigation/types';
-import { useTranslation } from 'react-i18next';
 import { TabBarIcon } from '@/components/atoms';
 import { Tabs } from '@/navigation/paths';
+import type { MainTabParamList } from '@/navigation/types';
 import { PlaylistList } from '@/screens';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Tab = createBottomTabNavigator<MainTabParamList>();
 

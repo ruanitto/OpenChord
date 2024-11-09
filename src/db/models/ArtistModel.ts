@@ -9,7 +9,7 @@ export default class ArtistModel extends Realm.Object {
         name: 'Artist',
         primaryKey: 'id',
         properties: {
-            id: 'uuid',
+            id: 'string',
             name: { type: 'string', optional: false },
             updated_at: 'date'
         }

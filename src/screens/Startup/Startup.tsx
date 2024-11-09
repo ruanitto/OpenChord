@@ -5,8 +5,8 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Text, View } from 'react-native';
 
-import { useTheme } from '@/theme';
 import { Paths } from '@/navigation/paths';
+import { useTheme } from '@/theme';
 
 import { AssetByVariant } from '@/components/atoms';
 import { SafeScreen } from '@/components/templates';

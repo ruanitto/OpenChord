@@ -1,6 +1,11 @@
 import { TouchableIcon } from '@/components/atoms';
-import { CustomHeader, EmptyListMessage, ListItem, TextInputModal } from '@/components/molecules';
-import { SafeScreen } from "@/components/templates";
+import {
+  CustomHeader,
+  EmptyListMessage,
+  ListItem,
+  TextInputModal,
+} from '@/components/molecules';
+import { SafeScreen } from '@/components/templates';
 import { createBundle } from '@/db/bundler';
 import { Playlist } from '@/db/Playlist';
 import type { Tabs } from '@/navigation/paths';
@@ -14,82 +19,91 @@ import type { StackNavigationProp } from '@react-navigation/stack';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList } from 'react-native';
-import Share from "react-native-share";
+import Share from 'react-native-share';
 
 type PlaylistListScreenNavigationProp = CompositeNavigationProp<
-    BottomTabNavigationProp<MainTabParamList, Tabs.PlaylistList>,
-    StackNavigationProp<RootStackParamList, Paths.MainTab>
->
+  BottomTabNavigationProp<MainTabParamList, Tabs.PlaylistList>,
+  StackNavigationProp<RootStackParamList, Paths.MainTab>
+>;
 
 type Props = {
-    navigation: PlaylistListScreenNavigationProp
-}
+  navigation: PlaylistListScreenNavigationProp;
+};
 
 function PlaylistList({ navigation }: Props) {
-    const { t } = useTranslation()
+  const { t } = useTranslation();
 
-    const [playlists, setPlaylists] = useState(Playlist.getAll())
-    const [showAddPlaylistModal, setShowAddPlaylistModal] = useState(false)
-    const [error, setError] = useState<string | null>(null)
+  const [playlists, setPlaylists] = useState(Playlist.getAll());
+  const [showAddPlaylistModal, setShowAddPlaylistModal] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-    function onSelectPlaylist(id: string, name: string) {
-        navigation.navigate(Paths.PlaylistView, { id, title: name })
-      }
-      
-      function onPressDeletePlaylist(id: string) {
-        alertDelete('playlist', id, () => {
-          setPlaylists(Playlist.getAll())
-        })
-      }
+  function onSelectPlaylist(id: string, name: string) {
+    navigation.navigate(Paths.PlaylistView, { id, title: name });
+  }
 
-      async function onPressShare(id: string, name: string) {
-        try {
-          const bundle = createBundle([id], [])
-          const bundleString = JSON.stringify(bundle)
-          const path = await createFile('documents', 'playlist_' + name.toLowerCase(), bundleString)
-          
-          await Share.open({
-            url: "file://" + path,
-            message: t('share_message')
-          })
-        } catch (error_) {
-          // eslint-disable-next-line no-console
-          console.warn(error_.message)
-        }
-      }
-    
+  function onPressDeletePlaylist(id: string) {
+    alertDelete('playlist', id, () => {
+      setPlaylists(Playlist.getAll());
+    });
+  }
 
-    function onSubmit(playlistName: string) {
-        try {
-            Playlist.create(playlistName)
-            setShowAddPlaylistModal(false)
-            setPlaylists(Playlist.getAll())
-        } catch (error_) {
-            if (error_ instanceof Error) {
-                setError(error_.message)
-            } else {
-                throw error_
-            }
-        }
+  async function onPressShare(id: string, name: string) {
+    try {
+      const bundle = createBundle([id], []);
+      const bundleString = JSON.stringify(bundle);
+      const path = await createFile(
+        'documents',
+        'playlist_' + name.toLowerCase(),
+        bundleString,
+      );
+
+      await Share.open({
+        url: 'file://' + path,
+        message: t('share_message'),
+      });
+    } catch (error_) {
+      // eslint-disable-next-line no-console
+      console.warn(error_.message);
     }
+  }
 
-    return (<SafeScreen>
-        <CustomHeader
-            headerRight={<TouchableIcon name="plus" onPress={() => setShowAddPlaylistModal(true)} />}
-            title={t('playlists')}
-        />
+  function onSubmit(playlistName: string) {
+    try {
+      Playlist.create(playlistName);
+      setShowAddPlaylistModal(false);
+      setPlaylists(Playlist.getAll());
+    } catch (error_) {
+      if (error_ instanceof Error) {
+        setError(error_.message);
+      } else {
+        throw error_;
+      }
+    }
+  }
 
-        <TextInputModal
-            enabled={showAddPlaylistModal}
-            error={error}
-            onDismiss={() => {
-                setError(null)
-                setShowAddPlaylistModal(false)
-            }}
-            onSubmit={onSubmit}
-            placeholder={t('playlist_name')}
-            submitButtonTitle={t('create').toUpperCase()}
-        />
+  return (
+    <SafeScreen>
+      <CustomHeader
+        headerRight={
+          <TouchableIcon
+            name="plus"
+            onPress={() => setShowAddPlaylistModal(true)}
+          />
+        }
+        title={t('playlists')}
+      />
+
+      <TextInputModal
+        enabled={showAddPlaylistModal}
+        error={error}
+        onDismiss={() => {
+          setError(null);
+          setShowAddPlaylistModal(false);
+        }}
+        onSubmit={onSubmit}
+        placeholder={t('playlist_name')}
+        submitButtonTitle={t('create').toUpperCase()}
+      />
 
       <FlatList
         ListEmptyComponent={
@@ -107,14 +121,22 @@ function PlaylistList({ navigation }: Props) {
               key={item.id!}
               onPress={() => onSelectPlaylist(item.id!, item.name)}
               options={[
-                { title: t('share'), onPress: () => onPressShare(item.id, item.name) },
-                { title: t('delete'), onPress: () => onPressDeletePlaylist(item.id!) }
+                {
+                  title: t('share'),
+                  onPress: () => onPressShare(item.id, item.name),
+                },
+                {
+                  title: t('delete'),
+                  onPress: () => onPressDeletePlaylist(item.id!),
+                },
               ]}
-              title={item.name} />
-          )
+              title={item.name}
+            />
+          );
         }}
       />
-    </SafeScreen>)
+    </SafeScreen>
+  );
 }
 
-export default PlaylistList
+export default PlaylistList;

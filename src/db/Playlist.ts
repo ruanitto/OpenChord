@@ -1,9 +1,9 @@
-import realm from "."
-import { List, Results } from "realm"
-import { Song } from "./Song"
-import { PlaylistBundle } from "./bundler"
 import { PlaylistModel } from "@/db/models"
+import type { List, Results } from "realm"
 import { v4 as uuid } from 'uuid'
+import realm from "."
+import type { Song } from "./Song"
+import type { PlaylistBundle } from "./bundler"
 
 export class Playlist extends PlaylistModel {
   static getAll() { return realm.objects<Playlist>('Playlist').sorted('name') }
@@ -15,7 +15,7 @@ export class Playlist extends PlaylistModel {
   }
 
   static hasSong(playlist: Playlist, song: Song) {
-    if (!playlist || !song) return false
+    if (!playlist || !song) {return false}
 
     return playlist.songs.some(s => s.id == song.id)
   }
@@ -37,7 +37,7 @@ export class Playlist extends PlaylistModel {
       throw new Error(`Empty name not allowed`)
     }
 
-    let sameNamePlaylist = Playlist.getByName(name)
+    const sameNamePlaylist = Playlist.getByName(name)
 
     if (sameNamePlaylist) {
       throw new Error(`Playlist with name "${name}" already exists`)
@@ -61,13 +61,13 @@ export class Playlist extends PlaylistModel {
       throw new Error(`Empty name not allowed`)
     }
 
-    let sameNamePlaylist = Playlist.getByName(name)
+    const sameNamePlaylist = Playlist.getByName(name)
 
     if (sameNamePlaylist && sameNamePlaylist.id != id) {
       throw new Error(`Playlist with name "${name}" already exists`)
     }
 
-    let playlist = Playlist.getById(id)
+    const playlist = Playlist.getById(id)
 
     if (playlist != null) {
       realm.write(() => {
@@ -81,7 +81,7 @@ export class Playlist extends PlaylistModel {
   }
 
   static delete(id: string) {
-    let playlist = Playlist.getById(id)
+    const playlist = Playlist.getById(id)
 
     if (playlist) {
       realm.write(() => {
@@ -96,7 +96,7 @@ export class Playlist extends PlaylistModel {
     if (playlist.songs instanceof Array) {
       playlistSongs = playlist.songs.map(s => ({ id: s.id }))
     } else {
-      for (var s in playlist.songs) {
+      for (const s in playlist.songs) {
         playlistSongs.push({ id: playlist.songs[s].id })
       }
     }
@@ -112,7 +112,7 @@ export class Playlist extends PlaylistModel {
     let songs: Results<Song> | List<Song> | Song[] = playlist.songs
 
     if (songs instanceof Array) {
-      let asc = reverse ? -1 : 1
+      const asc = reverse ? -1 : 1
 
       if (sortBy === 'ARTIST') {
         songs = songs.sort((a, b) => {
