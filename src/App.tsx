@@ -8,6 +8,21 @@ import { ThemeProvider } from '@/theme';
 import ApplicationNavigator from '@/navigation/Application';
 
 import '@/translations';
+import { useI18n } from '@/hooks';
+import { useEffect } from 'react';
+import { GlobalSettings } from '@/db/GlobalSettings';
+
+
+const LoadLanguage = () => {
+  const { changeLanguage } = useI18n()
+  useEffect(() => {
+    let { language } = GlobalSettings.get()
+
+    changeLanguage(language)
+  }, [])
+
+  return null
+}
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,6 +42,7 @@ function App() {
     <GestureHandlerRootView>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider storage={storage}>
+          <LoadLanguage />
           <ApplicationNavigator />
         </ThemeProvider>
       </QueryClientProvider>
