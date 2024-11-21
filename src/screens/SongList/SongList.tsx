@@ -78,7 +78,7 @@ function SongList({ navigation }: Props) {
       <StatusBar backgroundColor='white' barStyle='dark-content' />
       <CustomHeader
         headerRight={<TouchableIcon name="plus" onPress={addNewSong} />}
-        title={t('playlists')}
+        title={t('songs')}
       />
       <SearchBar
         onChangeText={(value) => setQuery(value)}
