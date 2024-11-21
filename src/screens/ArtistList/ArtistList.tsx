@@ -96,7 +96,7 @@ function ArtistList({ navigation }: Props) {
           <EmptyListMessage
             buttonTitle={t('go_to_online_search').toUpperCase()}
             message={t('you_havent_downloaded_any_song_yet')}
-            onPress={() => { navigation.navigate(Tabs.OnlineSearch) }}
+            onPress={() => { navigation.navigate(Tabs.OnlineSearch) }} // TODO: Make
           />
         }
         contentContainerStyle={artists.length <= 0 ? { flex: 1 } : {}}

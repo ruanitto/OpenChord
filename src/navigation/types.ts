@@ -7,6 +7,12 @@ export type RootStackParamList = {
   [Paths.Example]: undefined;
   [Paths.ArtistView]: { id: string, title: string }
   [Paths.PlaylistView]: { id: string, title: string }
+  [Paths.OnlineArtistView]: { path: string, serviceName: string, title: string }
+  [Paths.SongPreview]: { path: string, serviceName: string }
+  [Paths.SongView]: { id: string, title: string }
+  [Paths.SongEdit]: undefined | { id: string }
+  [Paths.PlaylistAddSongs]: { id: string }
+  [Paths.PlaylistEdit]: { id: string }
 };
 
 export type RootScreenProps<

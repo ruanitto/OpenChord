@@ -2,7 +2,13 @@ export const enum Paths {
   ArtistView = 'artist-view',
   Example = 'example',
   MainTab = 'main',
+  OnlineArtistView = 'online-artist-view',
+  PlaylistAddSongs = 'playlist-add-song',
+  PlaylistEdit = 'playlist-edit',
   PlaylistView = 'playlist-view',
+  SongEdit = 'song-edit',
+  SongPreview = 'song-preview',
+  SongView = 'song-view',
   Startup = 'startup'
 }
 

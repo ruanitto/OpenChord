@@ -24,6 +24,7 @@
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/stack": "^6.4.1",
     "@tanstack/react-query": "^5.59.8",
+    "axios": "^1.7.7",
     "chordjs": "^2.0.1",
     "chordsheetjs": "^10.3.0",
     "i18next": "^23.15.2",
