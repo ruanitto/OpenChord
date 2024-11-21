@@ -21,7 +21,7 @@ function MainTab() {
       <Tab.Screen
         component={ArtistList}
         name={Tabs.ArtistList}
-        options={{ title: t('artists'), tabBarIcon: (props) => <TabBarIcon {...props} name="artist" /> }} />
+        options={{ title: t('artists'), tabBarIcon: (props) => <TabBarIcon {...props} name="account-music" /> }} />
           {/* <Tab.Screen
             name="SongList"
             options={{ title: t('songs'), tabBarIcon: (props) => <TabBarIcon {...props} name="format-list-bulleted-square" /> }}
@@ -34,7 +34,7 @@ function MainTab() {
           <Tab.Screen
             component={SettingsTab}
             name={Tabs.Settings}
-            options={{ title: t('settings'), tabBarIcon: (props) => <TabBarIcon {...props} name="settings" /> }} />
+            options={{ title: t('settings'), tabBarIcon: (props) => <TabBarIcon {...props} name="application-settings" /> }} />
     </Tab.Navigator>
   )
 }
