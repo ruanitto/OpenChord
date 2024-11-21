@@ -1,4 +1,4 @@
-export const enum Paths {
+export const enum Stack {
   ArtistView = 'artist-view',
   Example = 'example',
   MainTab = 'main',
@@ -16,7 +16,7 @@ export const enum Tabs {
   ArtistList = 'artist-list',
   OnlineSearch = 'online-search',
   PlaylistList = 'playlist-list',
-  Settings = 'settings',
+  Settings = 'settings-tab',
   SongList = 'song-list'
 }
 

@@ -9,7 +9,7 @@ import { SafeScreen } from '@/components/templates';
 import { createBundle } from '@/db/bundler';
 import { Playlist } from '@/db/Playlist';
 import type { Tabs } from '@/navigation/paths';
-import { Paths } from '@/navigation/paths';
+import { Stack } from '@/navigation/paths';
 import type { MainTabParamList, RootStackParamList } from '@/navigation/types';
 import { alertDelete } from '@/utils/alertDelete';
 import createFile from '@/utils/createFile';
@@ -23,7 +23,7 @@ import Share from 'react-native-share';
 
 type PlaylistListScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<MainTabParamList, Tabs.PlaylistList>,
-  StackNavigationProp<RootStackParamList, Paths.MainTab>
+  StackNavigationProp<RootStackParamList, Stack.MainTab>
 >;
 
 type Props = {
@@ -38,7 +38,7 @@ function PlaylistList({ navigation }: Props) {
   const [error, setError] = useState<string | null>(null);
 
   function onSelectPlaylist(id: string, name: string) {
-    navigation.navigate(Paths.PlaylistView, { id, title: name });
+    navigation.navigate(Stack.PlaylistView, { id, title: name });
   }
 
   function onPressDeletePlaylist(id: string) {

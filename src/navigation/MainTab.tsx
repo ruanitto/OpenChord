@@ -1,7 +1,7 @@
 import { TabBarIcon } from '@/components/atoms';
 import { Tabs } from '@/navigation/paths';
 import type { MainTabParamList } from '@/navigation/types';
-import { ArtistList, PlaylistList } from '@/screens';
+import { ArtistList, PlaylistList, SongList } from '@/screens';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -22,12 +22,11 @@ function MainTab() {
         component={ArtistList}
         name={Tabs.ArtistList}
         options={{ title: t('artists'), tabBarIcon: (props) => <TabBarIcon {...props} name="account-music" /> }} />
+      <Tab.Screen
+        component={SongList}
+        name={Tabs.SongList}
+        options={{ title: t('songs'), tabBarIcon: (props) => <TabBarIcon {...props} name="format-list-bulleted-square" /> }} />
           {/* <Tab.Screen
-            name="SongList"
-            options={{ title: t('songs'), tabBarIcon: (props) => <TabBarIcon {...props} name="format-list-bulleted-square" /> }}
-            component={SongList}
-          />
-          <Tab.Screen
             name="OnlineSearch"
             options={{ title: t('online_search'), tabBarIcon: (props) => <TabBarIcon {...props} name="magnify" /> }}
             component={OnlineSearch} /> */}

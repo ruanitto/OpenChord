@@ -1,18 +1,18 @@
-import type { Config, Paths, Tabs } from '@/navigation/paths';
+import type { Config, Stack, Tabs } from '@/navigation/paths';
 import type { StackScreenProps } from '@react-navigation/stack';
 
 export type RootStackParamList = {
-  [Paths.Startup]: undefined;
-  [Paths.MainTab]: undefined;
-  [Paths.Example]: undefined;
-  [Paths.ArtistView]: { id: string, title: string }
-  [Paths.PlaylistView]: { id: string, title: string }
-  [Paths.OnlineArtistView]: { path: string, serviceName: string, title: string }
-  [Paths.SongPreview]: { path: string, serviceName: string }
-  [Paths.SongView]: { id: string, title: string }
-  [Paths.SongEdit]: undefined | { id: string }
-  [Paths.PlaylistAddSongs]: { id: string }
-  [Paths.PlaylistEdit]: { id: string }
+  [Stack.Startup]: undefined; // TODO: Remove
+  [Stack.MainTab]: undefined;
+  [Stack.Example]: undefined; // TODO: Remove
+  [Stack.ArtistView]: { id: string, title: string }
+  [Stack.PlaylistView]: { id: string, title: string }
+  [Stack.OnlineArtistView]: { path: string, serviceName: string, title: string }
+  [Stack.SongPreview]: { path: string, serviceName: string }
+  [Stack.SongView]: { id: string, title: string }
+  [Stack.SongEdit]: undefined | { id: string }
+  [Stack.PlaylistAddSongs]: { id: string }
+  [Stack.PlaylistEdit]: { id: string }
 };
 
 export type RootScreenProps<

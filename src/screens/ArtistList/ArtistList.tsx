@@ -6,7 +6,7 @@ import {
 } from '@/components/molecules';
 import { SafeScreen } from '@/components/templates';
 import { Artist } from '@/db/Artist';
-import { Paths, Tabs } from '@/navigation/paths';
+import { Stack, Tabs } from '@/navigation/paths';
 import type { MainTabParamList, RootStackParamList } from '@/navigation/types';
 import { alertDelete } from '@/utils/alertDelete';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
@@ -18,7 +18,7 @@ import { FlatList, StatusBar } from 'react-native';
 
 type ArtistListScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<MainTabParamList, Tabs.ArtistList>,
-  StackNavigationProp<RootStackParamList, Paths.MainTab>
+  StackNavigationProp<RootStackParamList, Stack.MainTab>
 >;
 
 type Props = {
@@ -35,7 +35,7 @@ function ArtistList({ navigation }: Props) {
   const [artistEditId, setArtistEditId] = useState<string | null>(null)
   
   function onSelectArtist(id: string, name: string) {
-    navigation.navigate(Paths.ArtistView, { id, title: name })
+    navigation.navigate(Stack.ArtistView, { id, title: name })
   }
 
   function onPressDeleteArtist(id: string) {
@@ -74,7 +74,6 @@ function ArtistList({ navigation }: Props) {
       setArtists(Artist.getAll())
     }, [])
   )
-
 
   return (
     <SafeScreen>

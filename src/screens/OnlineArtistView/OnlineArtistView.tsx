@@ -2,7 +2,7 @@ import {
     ListItem,
     LoadingIndicator
 } from '@/components/molecules';
-import { Paths } from '@/navigation/paths';
+import { Stack } from '@/navigation/paths';
 import type { RootStackParamList } from '@/navigation/types';
 import { getService } from '@/services';
 import type { SongDoc } from '@/services/BaseService';
@@ -11,9 +11,9 @@ import type { StackNavigationProp } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
 import { FlatList } from 'react-native';
   
-type OnlineArtistViewScreenRouteProp = RouteProp<RootStackParamList, Paths.OnlineArtistView>
+type OnlineArtistViewScreenRouteProp = RouteProp<RootStackParamList, Stack.OnlineArtistView>
 
-type OnlineArtistViewScreenNavigationProp = StackNavigationProp<RootStackParamList, Paths.OnlineArtistView>
+type OnlineArtistViewScreenNavigationProp = StackNavigationProp<RootStackParamList, Stack.OnlineArtistView>
 
 type Props = {
     navigation: OnlineArtistViewScreenNavigationProp 
@@ -27,27 +27,27 @@ function OnlineArtistView({ navigation, route }: Props) {
     const serviceName = route.params.serviceName
     const path = route.params.path
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const docs = await getService(serviceName)!.getArtistSongs(path)
-        setSongs(docs)
-        setIsLoading(false)
-      } catch (error_) {
-        if (error_ instanceof Error) {
-          setError(error_.message)
-          setIsLoading(false)
-        } else {
-          throw error_
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+            const docs = await getService(serviceName)!.getArtistSongs(path)
+            setSongs(docs)
+            setIsLoading(false)
+            } catch (error_) {
+            if (error_ instanceof Error) {
+                setError(error_.message)
+                setIsLoading(false)
+            } else {
+                throw error_
+            }
+            }
         }
-      }
-    }
-    fetchData()
-  }, [path, serviceName]);
+        fetchData()
+    }, [path, serviceName]);
 
-  function onSelectSong(path: string, serviceName: string) {
-    navigation.navigate(Paths.SongPreview, { path, serviceName }) // TODO: Make
-  }
+    function onSelectSong(path: string, serviceName: string) {
+        navigation.navigate(Stack.SongPreview, { path, serviceName }) // TODO: Make
+    }
   
     return (
         <FlatList
