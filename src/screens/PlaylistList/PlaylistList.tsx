@@ -61,9 +61,9 @@ function PlaylistList({ navigation }: Props) {
         url: 'file://' + path,
         message: t('share_message'),
       });
-    } catch (error_) {
+    } catch (error) {
       // eslint-disable-next-line no-console
-      console.warn(error_.message);
+      console.warn(error.message);
     }
   }
 

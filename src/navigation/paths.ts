@@ -1,4 +1,5 @@
 export const enum Paths {
+  ArtistView = 'artist-view',
   Example = 'example',
   MainTab = 'main',
   PlaylistView = 'playlist-view',

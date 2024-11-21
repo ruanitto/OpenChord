@@ -5,6 +5,7 @@ export type RootStackParamList = {
   [Paths.Startup]: undefined;
   [Paths.MainTab]: undefined;
   [Paths.Example]: undefined;
+  [Paths.ArtistView]: { id: string, title: string }
   [Paths.PlaylistView]: { id: string, title: string }
 };
 
