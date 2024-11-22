@@ -1,4 +1,5 @@
 export { default as ArtistList } from './ArtistList/ArtistList';
+export { default as ArtistView } from './ArtistView/ArtistView';
 export { default as Example } from './Example/Example';
 export { default as FontSizeSelect } from './FontSizeSelect/FontSizeSelect';
 export { default as OnlineArtistView } from './OnlineArtistView/OnlineArtistView';

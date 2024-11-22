@@ -111,11 +111,11 @@ function OnlineSearch({ navigation }: Props) {
         renderItem={({ item, index }) => {
           return item.type == 'artist' ? (
               <ListItem
-                onPress={() => { navigation.navigate(Stack.OnlineArtistView, { path: item.path, serviceName, title: item.name }) }} // TODO: MAKE
+                onPress={() => { navigation.navigate(Stack.OnlineArtistView, { path: item.path, serviceName, title: item.name }) }}
                 title={item.name}
               />) : (
               <ListItem
-                onPress={() => { navigation.navigate(Stack.SongPreview, { path: item.path, serviceName }) }} // TODO: MAKE
+                onPress={() => { navigation.navigate(Stack.SongPreview, { path: item.path, serviceName }) }}
                 subtitle={item.artist}
                 title={item.title}
               />);

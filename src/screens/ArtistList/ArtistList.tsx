@@ -35,7 +35,7 @@ function ArtistList({ navigation }: Props) {
   const [artistEditId, setArtistEditId] = useState<string | null>(null)
   
   function onSelectArtist(id: string, name: string) {
-    navigation.navigate(Stack.ArtistView, { id, title: name })
+    navigation.navigate(Stack.ArtistView, { id, title: name }) // TODO: Make
   }
 
   function onPressDeleteArtist(id: string) {
@@ -95,7 +95,7 @@ function ArtistList({ navigation }: Props) {
           <EmptyListMessage
             buttonTitle={t('go_to_online_search').toUpperCase()}
             message={t('you_havent_downloaded_any_song_yet')}
-            onPress={() => { navigation.navigate(Tabs.OnlineSearch) }} // TODO: Make
+            onPress={() => { navigation.navigate(Tabs.OnlineSearch) }}
           />
         }
         contentContainerStyle={artists.length <= 0 ? { flex: 1 } : {}}

@@ -33,7 +33,7 @@ function SongList({ navigation }: Props) {
   const [query, setQuery] = useState('')
 
   function onSelectSong(id: string, title: string) {
-    navigation.navigate(Stack.SongView, { id, title })
+    navigation.navigate(Stack.SongView, { id, title }) // TODO: ADD
   }
 
   function addNewSong() {
