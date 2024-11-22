@@ -1,7 +1,7 @@
 import MainTab from '@/navigation/MainTab';
 import { Stack } from '@/navigation/paths';
 import type { RootStackParamList } from '@/navigation/types';
-import { Example, OnlineArtistView, SongPreview, Startup } from '@/screens';
+import { Example, OnlineArtistView, PlaylistView, SongPreview, Startup } from '@/screens';
 import { useTheme } from '@/theme';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -31,12 +31,9 @@ function ApplicationNavigator() {
             options={({ route }) => ({ title: route.params.title })} />
           <RootStack.Screen
             name="SongEdit"
-            component={SongEdit} />
-          <RootStack.Screen
-            name="PlaylistView"
-            component={PlaylistView}
-            options={({ route }) => ({ title: route.params.title })} />
-          <RootStack.Screen
+            component={SongEdit} /> */}
+        <RootStack.Screen component={PlaylistView} name={Stack.PlaylistView} options={({ route }) => ({ title: route.params.title })} />
+          {/* <RootStack.Screen
             name="PlaylistAddSongs"
             component={PlaylistAddSongs}
             options={{ title: t('add_songs') }} />
