@@ -6,5 +6,6 @@ export { default as OnlineSearch } from './OnlineSearch/OnlineSearch';
 export { default as PlaylistList } from './PlaylistList/PlaylistList';
 export { default as Settings } from './Settings/Settings';
 export { default as SongList } from './SongList/SongList';
+export { default as SongPreview } from './SongPreview/SongPreview';
 export { default as Startup } from './Startup/Startup';
 
