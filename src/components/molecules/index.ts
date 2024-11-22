@@ -1,3 +1,5 @@
+export { default as AutoScrollSlider } from './AutoScrollSlider/AutoScrollSlider';
+export { default as ChordChart } from './ChordChart/ChordChart';
 export { default as CustomHeader } from './CustomHeader/CustomHeader';
 export { default as DefaultError } from './DefaultError/DefaultError';
 export { default as EmptyListMessage } from './EmptyListMessage/EmptyListMessage';

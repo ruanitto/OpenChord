@@ -83,7 +83,7 @@ function OnlineSearch({ navigation }: Props) {
             t('online_search_not_available') + '. ' +
             t('you_can_still_create_songs_manually')
           }
-          onPress={() => navigation.navigate(Stack.SongEdit)} // TODO: MAKE
+          onPress={() => navigation.navigate(Stack.SongEdit)}
         />
       </SafeScreen>
     )

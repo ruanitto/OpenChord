@@ -35,7 +35,7 @@ function ArtistList({ navigation }: Props) {
   const [artistEditId, setArtistEditId] = useState<string | null>(null)
   
   function onSelectArtist(id: string, name: string) {
-    navigation.navigate(Stack.ArtistView, { id, title: name }) // TODO: Make
+    navigation.navigate(Stack.ArtistView, { id, title: name })
   }
 
   function onPressDeleteArtist(id: string) {

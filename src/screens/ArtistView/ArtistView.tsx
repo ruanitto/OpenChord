@@ -28,11 +28,11 @@ function ArtistView({ navigation, route }: Props) {
   const [musics, setMusics] = useState(Song.getByArtist(artist.id!))
 
   function onSelectSong(id: string, title: string) {
-    navigation.navigate(Stack.SongView, { id, title }) // TODO: Make
+    navigation.navigate(Stack.SongView, { id, title })
   }
 
   function onPressEditSong(id: string) {
-    navigation.navigate(Stack.SongEdit, { id }) // TODO: Make
+    navigation.navigate(Stack.SongEdit, { id })
   }
 
   function onPressDeleteSong(id: string) {

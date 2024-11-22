@@ -33,20 +33,20 @@ function SongList({ navigation }: Props) {
   const [query, setQuery] = useState('')
 
   function onSelectSong(id: string, title: string) {
-    navigation.navigate(Stack.SongView, { id, title }) // TODO: ADD
+    navigation.navigate(Stack.SongView, { id, title })
   }
 
   function addNewSong() {
-    navigation.navigate(Stack.SongEdit) // TODO: ADD
+    navigation.navigate(Stack.SongEdit)
   }
 
   function onPressEditSong(id: string) {
-    navigation.navigate(Stack.SongEdit, { id }) // TODO: ADD
+    navigation.navigate(Stack.SongEdit, { id })
   }
 
   function onPressGoToArtist(id: string) {
     const artist = Song.getById(id)!.artist
-    navigation.navigate(Stack.ArtistView, { id: artist.id, title: artist.name }) // TODO: ADD
+    navigation.navigate(Stack.ArtistView, { id: artist.id, title: artist.name })
   }
 
   function onPressDeleteSong(id: string) {

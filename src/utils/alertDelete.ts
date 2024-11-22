@@ -10,6 +10,7 @@ export const alertDelete = (modelType: 'artist' | 'song' | 'playlist', id: strin
 
     if (modelType === 'playlist') {title = 'Delete Playlist'}
 
+    // TODO: Translations
     Alert.alert(
       title,
       'Are you sure you want to permanently delete it?',

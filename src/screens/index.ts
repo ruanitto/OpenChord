@@ -4,10 +4,13 @@ export { default as Example } from './Example/Example';
 export { default as FontSizeSelect } from './FontSizeSelect/FontSizeSelect';
 export { default as OnlineArtistView } from './OnlineArtistView/OnlineArtistView';
 export { default as OnlineSearch } from './OnlineSearch/OnlineSearch';
+export { default as PlaylistAddSongs } from './PlaylistAddSongs/PlaylistAddSongs';
+export { default as PlaylistEdit } from './PlaylistEdit/PlaylistEdit';
 export { default as PlaylistList } from './PlaylistList/PlaylistList';
 export { default as PlaylistView } from './PlaylistView/PlaylistView';
 export { default as Settings } from './Settings/Settings';
+export { default as SongEdit } from './SongEdit/SongEdit';
 export { default as SongList } from './SongList/SongList';
 export { default as SongPreview } from './SongPreview/SongPreview';
+export { default as SongView } from './SongView/SongView';
 export { default as Startup } from './Startup/Startup';
-

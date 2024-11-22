@@ -46,7 +46,7 @@ function OnlineArtistView({ navigation, route }: Props) {
     }, [path, serviceName]);
 
     function onSelectSong(path: string, serviceName: string) {
-        navigation.navigate(Stack.SongPreview, { path, serviceName }) // TODO: Make
+        navigation.navigate(Stack.SongPreview, { path, serviceName })
     }
   
     return (

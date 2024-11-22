@@ -1,12 +1,12 @@
 import { PrimaryButton, TouchableIcon } from '@/components/atoms';
 import type {
-    LeftIconOptions,
-    PickerOption
+  LeftIconOptions,
+  PickerOption
 } from '@/components/molecules';
 import {
-    EmptyListMessage,
-    ListItem,
-    PickerModal
+  EmptyListMessage,
+  ListItem,
+  PickerModal
 } from '@/components/molecules';
 import type { SortBy } from '@/db/Playlist';
 import { Playlist } from '@/db/Playlist';
@@ -44,11 +44,11 @@ function PlaylistView({ navigation, route }: Props) {
   const [sortOptions, setSortOptions] = useState<PickerOption<SortBy>[]>([])
 
   function onSelectSong(id: string, title: string) {
-    navigation.navigate(Stack.SongView, { id, title }) // TODO: Make
+    navigation.navigate(Stack.SongView, { id, title })
   }
 
   function onPressEditSong(id: string) {
-    navigation.navigate(Stack.SongEdit, { id }) // TODO: Make
+    navigation.navigate(Stack.SongEdit, { id })
   }
 
   function onPressDeleteSong(songId: string) {
@@ -60,11 +60,11 @@ function PlaylistView({ navigation, route }: Props) {
   }
 
   function onPressAddSongs() {
-    navigation.navigate(Stack.PlaylistAddSongs, { id }) // TODO: Make
+    navigation.navigate(Stack.PlaylistAddSongs, { id })
   }
 
   function onPressEditPlaylist() {
-    navigation.navigate(Stack.PlaylistEdit, { id }) // TODO: Make
+    navigation.navigate(Stack.PlaylistEdit, { id })
   }
 
   useFocusEffect(
@@ -119,7 +119,6 @@ function PlaylistView({ navigation, route }: Props) {
     });
   }, [navigation]);
   
-
   return (
     <>
       <FlatList
